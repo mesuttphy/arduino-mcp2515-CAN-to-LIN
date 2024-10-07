@@ -33,9 +33,9 @@ Supported (=successfully tested) board:
 // setup LIN node. Note: not all pins support Rx!
 LIN_Master_SoftwareSerial   LIN(PIN_LIN_RX, PIN_LIN_TX, false, "LIN_SW");       // parameter: Rx, Tx, inverseLogic, name
 
-  //uint8_t Txr[8] = {0xFF, 0xFF, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00};  // RED LED
-  //uint8_t Txg[8] = {0xFF, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00};  // GREEN LED
-  uint8_t Txb[8] = {0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF};  // BLUE LED
+  //uint8_t Txr[8] = {0xFF, 0xFF, 0x00, 0x11, 0x11, 0x00, 0x00, 0x00};  // RED LED
+  //uint8_t Txg[8] = {0xFF, 0xFF, 0x00, 0x00, 0x00, 0x11, 0x11, 0x00};  // GREEN LED
+  uint8_t Txb[8] = {0xFF, 0xFF, 0x00, 0x00, 0x00, 0x11, 0x00, 0x11};  // BLUE LED
   uint8_t Tx_n[8]; // new Tx 
 
 
@@ -111,7 +111,7 @@ void loop() {
   LIN_Master::error_t   error;
 
   // send master request frame and get result immediately
-  error = LIN.sendMasterRequestBlocking(LIN_Master::LIN_V2, 0x61, 8, Tx_n); // new Tx
+  error = LIN.sendMasterRequestBlocking(LIN_Master::LIN_V2, 0x25, 8, Tx_n); // new Tx
 
   // reset state machine & error
   LIN.resetStateMachine();
